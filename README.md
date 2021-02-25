@@ -9,4 +9,4 @@ An app that will show an user's info.
 
 ## SCREENSHOT
 
-![](https://github.com/tipu0710/assignment/blob/master/screenshot/screenshot.gif)
+![](https://github.com/tipu0710/tpt_app/blob/master/screenshot/screenshot.gif)
