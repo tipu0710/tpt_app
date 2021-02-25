@@ -16,25 +16,27 @@ class DataModel {
   String photos;
   String registrationDate;
   String registrationStatus;
+  String phone;
 
   DataModel(
       {this.id,
-        this.firstName,
-        this.lastName,
-        this.emailAddress,
-        this.dateOfBirth,
-        this.gender,
-        this.idType,
-        this.idNumber,
-        this.address,
-        this.city,
-        this.state,
-        this.country,
-        this.postCode,
-        this.nationality,
-        this.photos,
-        this.registrationDate,
-        this.registrationStatus});
+      this.firstName,
+      this.lastName,
+      this.emailAddress,
+      this.dateOfBirth,
+      this.gender,
+      this.idType,
+      this.idNumber,
+      this.address,
+      this.city,
+      this.state,
+      this.country,
+      this.postCode,
+      this.nationality,
+      this.photos,
+      this.registrationDate,
+      this.registrationStatus,
+      this.phone});
 
   DataModel.fromJson(Map<String, dynamic> json) {
     id = json['Id'];
@@ -54,6 +56,7 @@ class DataModel {
     photos = json['Photos'];
     registrationDate = json['RegistrationDate'];
     registrationStatus = json['RegistrationStatus'];
+    phone = json['Phone'];
   }
 
   Map<String, dynamic> toJson() {
@@ -75,6 +78,7 @@ class DataModel {
     data['Photos'] = this.photos;
     data['RegistrationDate'] = this.registrationDate;
     data['RegistrationStatus'] = this.registrationStatus;
+    data['Phone'] = phone;
     return data;
   }
 }

@@ -6,6 +6,7 @@ import 'package:shimmer/shimmer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Profile extends StatelessWidget {
+  final String endPoint = "9443/api/Home/DemoApi/GetCustomer/";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,10 +15,7 @@ class Profile extends StatelessWidget {
         backgroundColor: primaryColor,
         leading: Container(),
         elevation: 0.0,
-        title: Text(
-          "Profile",
-          style: TextStyle(color: Colors.white),
-        ),
+        title: Text("Profile"),
       ),
       backgroundColor: primaryColor,
       body: SingleChildScrollView(
@@ -31,7 +29,7 @@ class Profile extends StatelessWidget {
             ),
           ),
           child: FutureBuilder<DataModel>(
-            future: ApiService.getMethod("9443/api/Home/DemoApi/GetCustomer/"),
+            future: ApiService.getMethod(endPoint),
             builder: (_, snapshot) {
               if (snapshot.hasData) {
                 print("Data get");
@@ -58,12 +56,13 @@ class Profile extends StatelessWidget {
             dataModel == null
                 ? null
                 : dataModel.firstName + dataModel.lastName),
-        field("Mobile NO", dataModel == null ? null : ""),
+        field("Mobile NO", dataModel == null? null:dataModel?.phone??""),
         field("Email", dataModel?.emailAddress),
         field("Address", dataModel?.address),
         field("City", dataModel?.city),
         field("Country", dataModel?.country),
-        field("Postal Code", dataModel?.postCode.toString()),
+        field("Postal Code",
+            dataModel == null ? null : dataModel?.postCode.toString()),
         field("Date Of Birth", dataModel?.dateOfBirth),
         field("Gender", dataModel?.gender),
         button(dataModel),
@@ -137,7 +136,7 @@ class Profile extends StatelessWidget {
                   ? null
                   : () {
                       launch(
-                          "https://example.com/?address=${data.address}&city=${data.city}&country=${data.country}&postalCode=${data.postCode}");
+                          "tsr://tsr.com/?address=${data.address}&city=${data.city}&country=${data.country}&postalCode=${data.postCode}&id=${endPoint.split('/').first}");
                     },
               color: primaryColor,
               child: Center(

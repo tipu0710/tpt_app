@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future callApi() async {
     await Future.delayed(Duration(seconds: 3));
-    Navigator.push(context,
-        MaterialPageRoute(builder: (_) => Profile()));
+    Navigator.pushAndRemoveUntil(context,
+        MaterialPageRoute(builder: (_) => Profile()), (route) => false);
   }
 }
